@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package haberlesme;
+
+// The greeting service definition.
+service Haberlesme {
+    // Sends a greeting
+
+    rpc sayName (NameRequest) returns (NameReply) {}
+    rpc showCar (NameRequest) returns (Car) {}
+    rpc sayNameStreamReply (NameRequest) returns (stream NameReply) {}
+}
+
+// The request message containing the user's name.
+message NameRequest {
+    string name = 1;
+}
+
+// The response message containing the greetings
+message NameReply {
+    string response = 1;
+}
+
+message Car {
+    string brand = 1;
+    string plate = 2;
+    int32 kilometer = 3;
+    string owner = 4;
+}
+
+message PersonReply {
+    Car pcar = 1;
+}
+// message PersonReply {
+//     repeated Car cars = 1;
+// }
