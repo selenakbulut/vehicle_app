@@ -11,13 +11,12 @@ message NameRequest {
     string name = 1;
 }
 
+message PersonReply {
+    repeated Car cars = 1;
+}
 message Car {
     string brand = 1;
     string plate = 2;
     int32 kilometer = 3;
     string owner = 4;
-}
-
-message PersonReply {
-    repeated Car cars = 1;
 }
