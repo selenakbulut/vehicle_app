@@ -3,15 +3,19 @@ syntax = "proto3";
 package haberlesme;
 
 service Haberlesme {
-    rpc showCar (NameRequest) returns (Car) {}
-    rpc getCars (NameRequest) returns (PersonReply) {}
+    rpc getCars (NameRequest) returns (CarReply) {}
+    rpc addPerson (Car) returns (PersonResponse) {}
 }   
 
 message NameRequest {
     string name = 1;
 }
 
-message PersonReply {
+message PersonResponse {
+    string name = 1;
+}
+
+message CarReply {
     repeated Car cars = 1;
 }
 message Car {
