@@ -1,14 +1,11 @@
 import os
 import json
 
-def check_file():
-    dosya_yolu = 'kisiler.json'
-    if not os.path.exists('kisiler.json'):
+def check_file(file):
+    if not os.path.exists(file):
             data = {"kisiler": []}
-            with open(dosya_yolu, 'w', encoding='utf-8') as file:
+            with open(file, 'w', encoding='utf-8') as file:
                 json.dump(data, file, indent =4)
-    else:
-        print("json dosyasi zaten var:", dosya_yolu)
 
 class Manager:
     def __init__(self) -> None:
@@ -18,7 +15,8 @@ class Manager:
          self.kilometer = None
          self.veri = str
          self.dosya_yolu = 'kisiler.json'
-         with open('kisiler.json', 'r', encoding='utf-8') as file:
+         check_file(self.dosya_yolu)
+         with open(self.dosya_yolu, 'r', encoding='utf-8') as file:
             self.veri = json.load(file)
             self.kisiler = self.veri.get('kisiler', [])
       
@@ -48,6 +46,24 @@ class Manager:
                     vehicles.append(car_info)        
         return vehicles
     
+    def addCartoPerson(self, person_name, brand, plate, kilometer):
+        new_car_info = {
+            "araba": brand,
+            "kilometre": kilometer,
+            "plaka": plate,
+        }
 
-                        
-                        
+        for kisi in self.kisiler:
+            if person_name == kisi.get('kisi'):
+                kisi['arabalar'].append(new_car_info)
+                break
+        else:
+            new_person = {
+            "kisi": person_name,
+            "arabalar": [new_car_info]
+        }
+            self.kisiler.append(new_person)
+            
+        self.veri['kisiler'] = self.kisiler
+        with open(self.dosya_yolu, 'w', encoding='utf-8') as file:
+            json.dump(self.veri, file, indent=4)
