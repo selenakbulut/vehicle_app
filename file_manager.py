@@ -55,8 +55,18 @@ class Manager:
 
         for kisi in self.kisiler:
             if person_name == kisi.get('kisi'):
-                kisi['arabalar'].append(new_car_info)
-                break
+                print(kisi.get('kisi'))
+                arabalar = kisi.get('arabalar', [])
+                print(arabalar)
+                for araba in arabalar:
+                    print(araba.get('plaka'))
+                    if plate == araba.get('plaka'):
+                        print(f"Plate number {plate} already exists for {person_name}")
+                        break
+                else:
+                    kisi['arabalar'].append(new_car_info)
+                break   
+                
         else:
             new_person = {
             "kisi": person_name,
