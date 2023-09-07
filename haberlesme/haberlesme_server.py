@@ -27,7 +27,15 @@ class Haberlesme(com_pb2_grpc.HaberlesmeServicer):
             new_car.owner = kisi.get('Arac sahibi')
             person.cars.append(new_car)
         return person
+    
+    def addPerson(self, request, context):
+        resp = com_pb2.PersonResponse()
+        man = file_manager.Manager()
+        resp.name = request.owner
 
+        man.addCartoPerson(person_name=request.owner,brand=request.brand, plate=request.plate, kilometer=request.kilometer )
+        return resp
+    
 def serve():
     port = "50051"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
