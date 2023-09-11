@@ -77,3 +77,22 @@ class Manager:
         self.veri['kisiler'] = self.kisiler
         with open(self.dosya_yolu, 'w', encoding='utf-8') as file:
             json.dump(self.veri, file, indent=4)
+
+    def km_update(self, person_name, plate, new_km):
+        for kisi in self.kisiler:
+            if person_name == kisi.get('kisi'):
+                arabalar = kisi.get('arabalar', [])
+
+                for araba in arabalar:
+                    if plate == araba.get('plaka'):
+                        old_km = araba.get('kilometre')
+                        if new_km >= old_km:
+                            araba['kilometre'] = new_km
+                        else:
+                            print("New kilometer cannot be less than older kilometer.")
+                        break
+                break
+
+        self.veri['kisiler'] = self.kisiler
+        with open(self.dosya_yolu, 'w', encoding='utf-8') as file:
+            json.dump(self.veri, file, indent=4)    
