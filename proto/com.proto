@@ -5,6 +5,7 @@ package haberlesme;
 service Haberlesme {
     rpc getCars (NameRequest) returns (CarReply) {}
     rpc addPerson (Car) returns (PersonResponse) {}
+    rpc kilometerUpdate(KilometerInfo) returns (PersonResponse) {}
 }   
 
 message NameRequest {
@@ -23,4 +24,10 @@ message Car {
     string plate = 2;
     int32 kilometer = 3;
     string owner = 4;
+}
+
+message KilometerInfo {
+    string owner = 1;
+    string plate = 2;
+    int32 new_kilometer= 3; 
 }
