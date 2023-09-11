@@ -33,8 +33,16 @@ class Haberlesme(com_pb2_grpc.HaberlesmeServicer):
         man = file_manager.Manager()
         resp.name = request.owner
 
-        man.addCartoPerson(person_name=request.owner,brand=request.brand, plate=request.plate, kilometer=request.kilometer )
+        man.addCartoPerson(person_name=request.owner,brand=request.brand, plate=request.plate, kilometer=request.kilometer)
         return resp
+    
+    def kilometerUpdate(self, request, context):
+        response = com_pb2.PersonResponse()
+        man = file_manager.Manager()
+        response.name = "engin"
+       
+        man.km_update(person_name=request.owner, plate=request.plate, new_km=request.new_kilometer)
+        return response
     
 def serve():
     port = "50051"
