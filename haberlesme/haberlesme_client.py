@@ -21,8 +21,11 @@ def run():
             print("Arac sahibi: " + car.owner)
             print()
         
-        personRes= stub.addPerson(com_pb2.Car(brand= "toyota", plate= "07MNG21", kilometer=88833, owner="mert"))
+        personRes= stub.addPerson(com_pb2.Car(brand= "toyota", plate= "07MNG21", kilometer= 11833, owner= "mert"))
         print(personRes.name)
+
+        newRes = stub.kilometerUpdate(com_pb2.KilometerInfo(owner= "engin", plate= "35DNZ22", new_kilometer= 1000))
+        print(newRes.name)
  
 if __name__ == "__main__":
     logging.basicConfig()
