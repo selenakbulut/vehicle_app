@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-package haberlesme;
+package communication;
 
-service Haberlesme {
+service Communication {
     rpc getCars (NameRequest) returns (CarReply) {}
     rpc addPerson (Car) returns (PersonResponse) {}
     rpc kilometerUpdate(KilometerInfo) returns (PersonResponse) {}
