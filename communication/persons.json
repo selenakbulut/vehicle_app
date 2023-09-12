@@ -1,0 +1,84 @@
+{
+    "persons": [
+        {
+            "person": "engin",
+            "cars": [
+                {
+                    "car": "porsce 911 992 turbo s gt3",
+                    "kilometer": 14000,
+                    "plate": "35DNZ22"
+                },
+                {
+                    "car": "toyota",
+                    "kilometer": 88888,
+                    "plate": "35ER58"
+                }
+            ]
+        },
+        {
+            "person": "selen",
+            "cars": [
+                {
+                    "car": "tesla",
+                    "kilometer": 12000,
+                    "plate": "06ANK06"
+                },
+                {
+                    "car": "honda",
+                    "kilometer": 777777,
+                    "plate": "34SLN19"
+                }
+            ]
+        },
+        {
+            "person": "eda",
+            "cars": [
+                {
+                    "car": "ford",
+                    "kilometer": 10000,
+                    "plate": "57SEN123"
+                }
+            ]
+        },
+        {
+            "person": "mert",
+            "cars": [
+                {
+                    "car": "bmw",
+                    "kilometer": 3333,
+                    "plate": "06VAN63"
+                },
+                {
+                    "car": "toyota",
+                    "kilometer": 90000,
+                    "plate": "35KK57"
+                },
+                {
+                    "car": "toyota",
+                    "kilometer": 11833,
+                    "plate": "07MNG21"
+                }
+            ]
+        },
+        {
+            "person": "ecem",
+            "cars": [
+                {
+                    "car": "honda",
+                    "kilometer": 123456,
+                    "plate": "16KBK47"
+                }
+            ]
+        },
+        {
+            "person": "ahmet",
+            "cars": [
+                {
+                    "car": "ferrari",
+                    "kilometer": 10,
+                    "plate": "63BAN44"
+                }
+            ]
+        }
+    ]
+}
