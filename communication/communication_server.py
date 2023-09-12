@@ -10,23 +10,23 @@ import com_pb2_grpc
 import file_manager
 
 
-class Haberlesme(com_pb2_grpc.HaberlesmeServicer):
+class Communication(com_pb2_grpc.CommunicationServicer):
     
     def getCars(self, request, context):
 
-        person = com_pb2.CarReply()
+        rep = com_pb2.CarReply()
         man = file_manager.Manager()
 
         data = man.get_cars(person_name=request.name)
         
-        for kisi in data:
+        for person in data:
             new_car = com_pb2.Car()
-            new_car.brand = kisi.get('Arac markasi')
-            new_car.plate = kisi.get('Arac plakasi')
-            new_car.kilometer = kisi.get('Arac kilometresi')
-            new_car.owner = kisi.get('Arac sahibi')
-            person.cars.append(new_car)
-        return person
+            new_car.brand = person.get('Car brand')
+            new_car.plate = person.get('Car plate')
+            new_car.kilometer = person.get('Car kilometer')
+            new_car.owner = person.get('Car owner')
+            rep.cars.append(new_car)
+        return rep
     
     def addPerson(self, request, context):
         resp = com_pb2.PersonResponse()
@@ -47,7 +47,7 @@ class Haberlesme(com_pb2_grpc.HaberlesmeServicer):
 def serve():
     port = "50051"
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    com_pb2_grpc.add_HaberlesmeServicer_to_server(Haberlesme(), server)
+    com_pb2_grpc.add_CommunicationServicer_to_server(Communication(), server)
     server.add_insecure_port("[::]:" + port)
     server.start()
     print("Server started, listening on " + port)

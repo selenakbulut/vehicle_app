@@ -10,7 +10,7 @@ import com_pb2_grpc
 class MyClient:
     def __init__(self, endpoint):
         self.channel = grpc.insecure_channel(endpoint)
-        self.stub = com_pb2_grpc.HaberlesmeStub(self.channel)
+        self.stub = com_pb2_grpc.CommunicationStub(self.channel)
     
     def get_cars(self, person_name):
         request = com_pb2.NameRequest(name=person_name)
