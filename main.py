@@ -1,5 +1,5 @@
 import logging
-from haberlesme import haberlesme_client
+from communication import communication_client
 
 def menu():
     while True:
@@ -11,15 +11,15 @@ def menu():
 
         choice= input("Enter your choice: ")
 
-        c = haberlesme_client.MyClient("localhost:50051")
+        c = communication_client.MyClient("localhost:50051")
         if choice == "1":
             p_name = input("Write your name: ").lower()
             resp = c.get_cars(person_name=p_name)
             for car in resp:
-                print("Kisinin arabasi: " + car.brand)
-                print("Arabanin plakasi: " + car.plate)
-                print("Arac kilometresi: " + str(car.kilometer))
-                print("Arac sahibi: " + car.owner)
+                print("Person's car: " + car.brand)
+                print("Plate of the car: " + car.plate)
+                print("Kilometer of the car: " + str(car.kilometer))
+                print("Car owner: " + car.owner)
                 print()
         
         elif choice == "2":
